@@ -1,0 +1,33 @@
+{
+  "name": "pace-calculator",
+  "version": "1.0.0",
+  "description": "A converter for running paces.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "elm-tooling install",
+    "test": "uvu -r esm tests",
+    "watch": "watchlist src tests -- pnpm test",
+    "elm:test": "elm-test-rs",
+    "elm:watch": "watchlist src tests -- pnpm elm:test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jluckyiv/pace-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jluckyiv/pace-calculator/issues"
+  },
+  "homepage": "https://github.com/jluckyiv/pace-calculator#readme",
+  "dependencies": {
+    "elm-tooling": "^1.7.0",
+    "sade": "^1.8.1"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "uvu": "^0.5.3",
+    "watchlist": "^0.3.1"
+  }
+}
