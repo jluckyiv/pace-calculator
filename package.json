@@ -7,7 +7,7 @@
     "postinstall": "elm-tooling install",
     "test": "uvu -r esm tests",
     "watch": "watchlist src tests -- pnpm test",
-    "elm:test": "elm-test-rs",
+    "elm:test": "elm-test",
     "elm:watch": "watchlist src tests -- pnpm elm:test"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "sade": "^1.8.1"
   },
   "devDependencies": {
+    "elm-test": "^0.19.1-revision7",
     "esm": "^3.2.25",
     "uvu": "^0.5.3",
     "watchlist": "^0.3.1"
