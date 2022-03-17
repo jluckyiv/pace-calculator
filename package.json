@@ -7,7 +7,7 @@
     "postinstall": "elm-tooling install",
     "test": "uvu -r esm tests",
     "watch": "watchlist src tests -- pnpm test",
-    "elm:test": "elm-test",
+    "elm:test": "elm-test-rs",
     "elm:watch": "watchlist src tests -- pnpm elm:test"
   },
   "repository": {
