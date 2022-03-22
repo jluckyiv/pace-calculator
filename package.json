@@ -7,7 +7,7 @@
   },
   "scripts": {
     "postinstall": "elm-tooling install",
-    "build": "elm make --optimize src/Main.elm --output=src/main.js",
+    "build": "elm make --optimize src/Main.elm --output=dist/main.js",
     "dev": "elm make src/Main.elm --output=src/main.js",
     "test": "uvu -r esm tests",
     "watch": "watchlist src tests -- pnpm test",
@@ -30,7 +30,6 @@
     "sade": "^1.8.1"
   },
   "devDependencies": {
-    "elm-test": "^0.19.1-revision7",
     "esm": "^3.2.25",
     "uvu": "^0.5.3",
     "watchlist": "^0.3.1"
