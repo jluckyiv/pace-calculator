@@ -4,7 +4,7 @@ const sade = require("sade");
 const pkg = require("./package");
 
 // Link to compiled Elm code main.js
-const Elm = require("./src/main").Elm;
+const Elm = require("./dist/main").Elm;
 const main = Elm.Main.init();
 
 const isSingleCommand = true;

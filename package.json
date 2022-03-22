@@ -6,10 +6,10 @@
     "rpace": "bin.js"
   },
   "scripts": {
-    "postinstall": "elm-tooling install",
+    "prepare": "elm-tooling install",
     "build": "elm make --optimize src/Main.elm --output=dist/main.js",
-    "dev": "elm make src/Main.elm --output=src/main.js",
-    "test": "uvu -r esm tests",
+    "dev": "elm make src/Main.elm --output=dist/main.js",
+    "test": "pnpm dev && uvu -r esm tests",
     "watch": "watchlist src tests -- pnpm test",
     "elm:test": "elm-test-rs",
     "elm:watch": "elm-test-rs --watch"

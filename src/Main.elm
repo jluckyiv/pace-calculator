@@ -4,6 +4,7 @@ import Json.Decode as Decode exposing (Decoder)
 import Pace
 import Parser
 import Platform exposing (Program)
+import Result exposing (andThen, map, mapError)
 
 
 type alias InputType =
@@ -72,18 +73,19 @@ subscriptions _ =
 
 transform : Decode.Value -> OutputType
 transform input =
-    let
-        value =
-            input
-                |> Decode.decodeValue inputDecoder
-                |> Result.mapError Decode.errorToString
-                |> Result.andThen (Pace.parse >> Result.mapError Parser.deadEndsToString)
-                |> Result.map Pace.inMinutesPerMile
-                |> Result.map Pace.toString
-    in
-    case value of
-        Ok v ->
-            v
+    case decodeAndParse input of
+        Ok value ->
+            value
 
-        Err err ->
-            err
+        Err error ->
+            error
+
+
+decodeAndParse : Decode.Value -> Result String String
+decodeAndParse value =
+    value
+        |> Decode.decodeValue inputDecoder
+        |> mapError Decode.errorToString
+        |> andThen (Pace.parse >> mapError Parser.deadEndsToString)
+        |> map Pace.inMinutesPerMile
+        |> map Pace.toString

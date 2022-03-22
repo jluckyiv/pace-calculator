@@ -1,34 +1,14 @@
-import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
+import { test } from "uvu";
+import * as assert from "uvu/assert";
 
-const sum = suite('sum');
+const Elm = require("../dist/main").Elm;
+const main = Elm.Main.init();
 
-// Different assertions per suite
-sum('should be a function', () => {
-	assert.type(math.sum, 'function');
+test("elm port should return correct pace", () => {
+  main.ports.get.send("800m@4:37");
+  main.ports.put.subscribe(function (data) {
+    assert.is(data, "9:17");
+  });
 });
 
-sum('should compute values', () => {
-	assert.is(math.sum(1, 2), 3);
-	assert.is(math.sum(-1, -2), -3);
-	assert.is(math.sum(-1, 1), 0);
-});
-
-sum.run();
-
-// Multiple suites
-
-const div = suite('div');
-
-div('should be a function', () => {
-	assert.type(math.div, 'function');
-});
-
-div('should compute values', () => {
-	assert.is(math.div(1, 2), 0.5);
-	assert.is(math.div(-1, -2), 0.5);
-	assert.is(math.div(-1, 1), -1);
-});
-
-div.run();
-
+test.run();
