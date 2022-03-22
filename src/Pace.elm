@@ -2,7 +2,7 @@ module Pace exposing
     ( Pace, SecondsPerMeter
     , secondsPerMeter, inSecondsPerMeter, minutesPerKilometer, inMinutesPerKilometer
     , secondsPerFoot, inSecondsPerFoot, minutesPerMile, inMinutesPerMile
-    , distanceAndTime, parse, speed, timeAndDistance
+    , distanceAndTime, parse, speed, timeAndDistance, toString
     )
 
 {-| A `Pace` value represents a speed in minutes per kilometer, minutes per hour etc.
@@ -202,3 +202,17 @@ parser =
             |. Parser.spaces
             |= TimeParser.parser
         ]
+
+
+toString : Float -> String
+toString value =
+    let
+        minutes =
+            truncate value
+
+        seconds =
+            (value - toFloat minutes)
+                * minute
+                |> truncate
+    in
+    String.fromInt minutes ++ ":" ++ (seconds |> String.fromInt |> String.padLeft 2 '0')
